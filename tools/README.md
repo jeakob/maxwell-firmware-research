@@ -67,3 +67,13 @@ pip install hidapi capstone
 Some scripts also require:
 - `lzma` (standard library, Python 3.x)
 - `pefile` (for DLL analysis scripts, not included here)
+
+## `compare_nvdm_keys.py` — NVDM keys and defaults across versions
+
+Scans each decompressed image for `movw r0,#<key>` sites (keys `0xE000`–`0xF7FF`)
+and the immediate loaded just before them, then prints one row per key across
+all given firmware files. Used for the v56→v74 comparison in [V38.md](../V38.md).
+
+```bash
+KEYS=F665,F668,F66E python compare_nvdm_keys.py Maxwell_v1.0.1.56_XBOX_headset.bin Maxwell_v1.0.1.74_XBOX_headset.bin
+```
