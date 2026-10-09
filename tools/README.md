@@ -77,3 +77,17 @@ all given firmware files. Used for the v56→v74 comparison in [V38.md](../V38.m
 ```bash
 KEYS=F665,F668,F66E python compare_nvdm_keys.py Maxwell_v1.0.1.56_XBOX_headset.bin Maxwell_v1.0.1.74_XBOX_headset.bin
 ```
+
+## `sidetone_patcher.py` — restore the v38/v46 DSP filter on a newer base
+
+Copies NVDM records from a stock v1.0.1.46 image into the FOTA NVDM
+partition (P2) of a newer stock image, keeping each record the same size,
+recomputing its checksum, then rebuilding and re-verifying the image with
+`firmware_patcher.py`'s helpers. `--set filter` restores `E600` (the 32-tap
+filter replaced in v51). `--set v46dsp` also restores `E048` and `E400`.
+Untested on hardware.
+
+```bash
+python sidetone_patcher.py --in Maxwell_v1.0.1.74_XBOX_headset.bin \
+    --ref Maxwell_v1.0.1.46_XBOX_headset.bin --set filter --out custom_v74_v38filter.bin
+```
