@@ -300,6 +300,7 @@ previous firmware. See **[FLASHING.md](FLASHING.md)** for the full recipe.
 | **[FIRMWARE.md](FIRMWARE.md)** | File format (LZMA-Alone), chip (AB1568), memory map, how to decompress and analyze |
 | **[PROTOCOL.md](PROTOCOL.md)** | RACE protocol, HID interface, command dispatch table, NVDM key reference |
 | **[VERSIONS.md](VERSIONS.md)** | Byte-level differences between v1.0.1.63 and v1.0.1.74 |
+| **[V38.md](V38.md)** | v1.0.1.38 (launch firmware): availability, sidetone/gain changes since, v56→v74 NVDM comparison |
 | **[FLASHING.md](FLASHING.md)** | FOTA process internals + working custom-firmware flash recipe |
 | **[PATCHES.md](PATCHES.md)** | Cookbook of known custom-firmware patches (L/R balance, concurrent playback) |
 | **[BOOTLOADER.md](BOOTLOADER.md)** | First-stage bootloader (in flash, not ROM), TLV parsing, integrity checks |
