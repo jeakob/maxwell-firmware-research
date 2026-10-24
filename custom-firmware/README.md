@@ -14,7 +14,6 @@ as the reference.
 | `Maxwell_v1.0.1.74_PS4_headset_v38filter.bin` | `E600` | `e430dfdb254510a8b096f40608b6a8f84140c0d94fd96b18a1111ac11ef466ef` |
 | `Maxwell_v1.0.1.74_XBOX_headset_v38v46dsp.bin` | `E600`, `E048`, `E400[6]` | `a13060cfba9d588953e7f4eb536a13e3afeca626f276e82ddad2617cfed51e3d` |
 | `Maxwell_v1.0.1.74_PS4_headset_v38v46dsp.bin` | `E600`, `E048`, `E400[6]` | `82ad297cb3cbc9fb8a57b0e2f1fcafecc73935d3068d4886f2393d729a4b5898` |
-
 | `Maxwell_v1.0.1.74_XBOX_headset_v38mic.bin` | `E600`, `E0F0` (from v38) | `c30853ff8ad35fea5c2de336ed7a83c3af5c698c07b551fe3d0ce1a7017c93cc` |
 | `Maxwell_v1.0.1.74_PS4_headset_v38mic.bin` | `E600`, `E0F0` (from v38) | `121aa82207f2788e3748f7bd3811b916c4b456f3bda5852a09f2d6fd5fd85d53` |
 
