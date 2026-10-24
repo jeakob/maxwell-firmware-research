@@ -92,6 +92,19 @@ python sidetone_patcher.py --in Maxwell_v1.0.1.74_XBOX_headset.bin \
     --ref Maxwell_v1.0.1.46_XBOX_headset.bin --set filter --out custom_v74_v38filter.bin
 ```
 
+## `e0f0_gain_patcher.py` — set the E0F0 gain value, relabel the version
+
+Sets `E0F0[0x90]` (signed 16-bit; v38 = −1, stock v74 = −30) in a headset
+image, recomputes the record checksum, partition hashes, LZMA size and outer
+SHA-256, and optionally rewrites the header version label so the image can be
+flashed without downgrading to stock v63 first. See
+[custom-firmware/README.md](../custom-firmware/README.md) for the test results.
+
+```bash
+python e0f0_gain_patcher.py --in Maxwell_v1.0.1.74_XBOX_headset_v38mic.bin \
+    --gain -90 --version v1.0.1.75 --out Maxwell_v1.0.1.75_XBOX_headset_v38micg90.bin
+```
+
 ## `check_v38mic.py` — confirm a v38mic flash on the headset
 
 Read-only. Takes the expected `E600` and `E0F0` values from the
