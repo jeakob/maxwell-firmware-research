@@ -6,3 +6,6 @@ tools/*.bin
 # Python
 __pycache__/
 *.pyc
+
+# Published custom builds (see custom-firmware/README.md)
+!custom-firmware/*.bin
