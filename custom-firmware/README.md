@@ -1,7 +1,8 @@
 # Custom v1.0.1.74 headset firmware — v38-era DSP filter
 
-> **Untested on hardware.** These images pass every integrity check the
-> bootloader performs, but no one has flashed one yet. Flash at your own risk.
+> **Partly tested on hardware.** The Xbox `v38filter` and `v38mic` images have
+> each been flashed to one Xbox headset (see [Hardware results](#hardware-results)).
+> The PS4 images and the `v38v46dsp` images have not been flashed. Flash at your own risk.
 
 Each image is stock Audeze **v1.0.1.74** headset firmware with DSP NVDM records
 restored to their v1.0.1.38 / v1.0.1.46 values. They were built with
@@ -46,3 +47,16 @@ In the header, only the LZMA stream size and the partition-2 hash change.
 
 If the headset reads `E600` from its live NVDM rather than this partition,
 the image will behave like stock v74. To undo it, flash stock v63 or v74 again.
+
+## Hardware results
+
+One Xbox headset on USB-C (PID `0x4B1E`), flashed with MaxwellTool v2.3, October 2026:
+
+| Image | Flash | On-device check | Boom-mic sidetone |
+|-------|-------|-----------------|-------------------|
+| `XBOX_headset_v38filter` | OK | [`check_e600.py`](../tools/check_e600.py): P2 holds the v38/v46 `E600`; no `E600` in live NVDM | Still crackly |
+| `XBOX_headset_v38mic` (stock v63 first, then factory reset) | OK | [`check_v38mic.py`](../tools/check_v38mic.py): P2 `E600` and `E0F0` both match the image; neither key is in live NVDM | Much better |
+
+The filter alone made no audible difference, so on this unit the crackle comes
+from the v46 `E0F0` mic change rather than from `E600`. This rests on one
+headset and one listener.

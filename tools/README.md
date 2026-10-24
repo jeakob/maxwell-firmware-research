@@ -91,3 +91,16 @@ Untested on hardware.
 python sidetone_patcher.py --in Maxwell_v1.0.1.74_XBOX_headset.bin \
     --ref Maxwell_v1.0.1.46_XBOX_headset.bin --set filter --out custom_v74_v38filter.bin
 ```
+
+## `check_v38mic.py` — confirm a v38mic flash on the headset
+
+Read-only. Takes the expected `E600` and `E0F0` values from the
+`custom-firmware` v38mic image for the connected platform (Xbox or PS, by
+USB PID), reads the FOTA NVDM (P2) and live NVDM partitions over RACE
+`0x0403`, and reports whether each record matches the v38mic image or the
+stock v74 value, and whether a live-NVDM copy would override it. Needs the
+headset on USB-C with the Audeze app and MaxwellTool closed.
+
+```bash
+python check_v38mic.py
+```
