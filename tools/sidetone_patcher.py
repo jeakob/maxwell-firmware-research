@@ -33,6 +33,9 @@ import firmware_patcher as fp  # noqa: E402  (reuses its rebuild/verify helpers)
 SETS = {
     "filter": ["E600"],
     "v46dsp": ["E600", "E048", "E400"],
+    # v38 mic/audio-IO config (changed in v46: "adjusted mic settings to
+    # improve battery life"). Needs a v38 reference: --ref fota.bin,plain.bin
+    "v38mic": ["E600", "E0F0"],
 }
 
 
@@ -76,8 +79,14 @@ def main():
 
     raw = open(args.input, "rb").read()
     header, dec = fp.decompress_firmware(raw)
-    _, ref_dec = fp.decompress_firmware(open(args.ref, "rb").read())
-    ref_hdr = open(args.ref, "rb").read()[:0x1000]
+    # --ref is a stock FOTA file, or "fota.bin,plain.bin" for an encrypted
+    # reference (v38) whose decrypted+decompressed image is supplied separately.
+    ref_fota, *ref_plain = args.ref.split(",")
+    ref_hdr = open(ref_fota, "rb").read()[:0x1000]
+    if ref_plain:
+        ref_dec = open(ref_plain[0], "rb").read()
+    else:
+        _, ref_dec = fp.decompress_firmware(open(ref_fota, "rb").read())
     s, e = p2_slice(header, dec)
     rs, re_ = p2_slice(ref_hdr, ref_dec)
     data = bytearray(dec)
